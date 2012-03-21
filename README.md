@@ -28,7 +28,7 @@ In the following example the ```"development"``` environment will be selected
 by default. _Selecting an environment in your configuration file will also make
  its properties to be inherited in the other environments._  
 Continuing with the example, the ```"production"``` environment will also be 
-configured to use the port ```3000```, but its database url will be 
+configured to use the port ```3000```, but its database URL will be 
 ```"mongodb://localhost/prod-app"``` instead of 
 ```"mongodb://localhost/dev-app"```.
 
@@ -51,23 +51,62 @@ configured to use the port ```3000```, but its database url will be
 }
 ```
 
-### Using it in your program
+### Typical use case 
 
-When you ```require``` the envy module it will try to load the default configuration file: ```./config.json```.
+#### Define your configuration file
 
-``` js
-var envy = require('envy');
+Create a .json file on your project root (where the package.json is located), 
+for example:
 
-envy.config.your.properties;
+```json
+{
+	"environment": "development",
+
+	"development": {
+		"test": "Development property"
+	},
+
+	"production": {
+		"test": "Production property"
+	}
+}
 ```
 
-If you want to select an environment you will need to set the ```NODE_ENV``` 
-environment variable:
+#### Use your properties in your program
 
-```NODE_ENV=production node your-app.js```
+When you ```require``` the envy module it will try to load the default 
+configuration file at: ```./config.json```.
+
+``` js
+var config = require('envy').config;
+
+console.log(config.test);
+```
+
+#### Execute your application
+
+Executing your application without setting the ```NODE_ENV``` environment 
+variable will execute the program using the default properties in this case 
+the ```"development"``` set will be selected.
+
+```
+$> node your-app.js
+$> Development property
+$>
+```
+
+If you want to select another environment you will need to set the 
+```NODE_ENV``` environment variable:
+
+```
+$> NODE_ENV=production node your-app.js
+$> Production property
+$>
+```
 
 ## Future features
 
 We plan on extending the current features and include:
 
-	- Reload configuration files when modified.
+	- Reload configuration files when they are modified.
+

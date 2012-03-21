@@ -1,4 +1,5 @@
 // envy.js
+// Contains all the module logic.
 
 var envy = exports;
 
@@ -22,7 +23,7 @@ envy.load = function(filename) {
 
 // Load the default configuration file if it exists
 try {
-	envy.load('./config');
+	envy.load('config');
 } catch (e) {
 	// Ignore failure when loading default configuration file
 }
