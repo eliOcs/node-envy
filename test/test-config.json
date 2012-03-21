@@ -1,0 +1,16 @@
+{
+	"environment": "development",
+
+	"development": {
+		"port": 3000,
+		"database": {
+			"url": "mongodb://localhost/dev-app"
+		}
+	},
+
+	"production": {
+		"database": {
+			"url": "mongodb://localhost/prod-app"
+		}
+	}
+}

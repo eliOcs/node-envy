@@ -1,6 +1,7 @@
 # ENVy
 
-Handle your project environment properties from a simple .json file.
+Handle your project environment properties from a simple .json file. Determine
+ multiple environment and inherit properties between environments.
 
 ## Installation
 
@@ -25,7 +26,7 @@ environments will inherit their properties.
 
 In the following example the ```"development"``` environment will be selected 
 by default. _Selecting an environment in your configuration file will also make
- its properties to be inherited in the other environments._
+ its properties to be inherited in the other environments._  
 Continuing with the example, the ```"production"``` environment will also be 
 configured to use the port ```3000```, but its database url will be 
 ```"mongodb://localhost/prod-app"``` instead of 

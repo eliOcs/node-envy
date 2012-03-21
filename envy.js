@@ -1,6 +1,6 @@
 // envy.js
 
-var envy = module.exports;
+var envy = exports;
 
 // Load the .json file containing the 
 envy.load = function(filename) {
@@ -9,7 +9,7 @@ envy.load = function(filename) {
 
 	// load default environment
 	envy.config = config[config.environment];
-	
+
 	// Overwrite properties
 	if (process.env.NODE_ENV && config[process.env.NODE_ENV]) {
 		for (var property in config[process.env.NODE_ENV]) {
@@ -19,4 +19,9 @@ envy.load = function(filename) {
 
 };
 
-envy.load('./config.json');
+// Load the default configuration file if it exists
+try {
+	envy.load('./config');
+} catch (e) {
+	// Ignore failure when loading default configuration file
+}
