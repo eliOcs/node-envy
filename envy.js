@@ -5,7 +5,8 @@ var envy = exports;
 // Load the .json file containing the 
 envy.load = function(filename) {
 
-	var config = require(filename);
+	// filenames are relative to the execution path
+	var config = require(process.env.PWD + '/' + filename);
 
 	// load default environment
 	envy.config = config[config.environment];

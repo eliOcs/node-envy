@@ -1,7 +1,7 @@
 # ENVy
 
 Handle your project environment properties from a simple .json file. Determine
- multiple environment and inherit properties between environments.
+ multiple environment and inherit properties between them.
 
 ## Installation
 
