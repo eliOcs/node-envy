@@ -1,3 +1,7 @@
 # NPM dependencies
 node_modules
 *.log
+# VIM backup files
+.*.swp
+.*.swo
+*~
