@@ -17,9 +17,7 @@ There is no standard way of managing in node environment properties per
 project. With envy you can easily cover this necessity for projects that have 
 to handle many environments.
 
-## Usage
-
-### File format
+## File format
 
 The file defines what is your default environment from which all other 
 environments will inherit their properties.
@@ -51,9 +49,9 @@ configured to use the port ```3000```, but its database URL will be
 }
 ```
 
-### Typical use case 
+## Typical use case 
 
-#### Define your configuration file
+### Define your configuration file
 
 Create a .json file on your project root (where the package.json is located), 
 for example:
@@ -72,7 +70,7 @@ for example:
 }
 ```
 
-#### Use your properties in your program
+### Use your properties in your program
 
 When you ```require``` the envy module it will try to load the default 
 configuration file at: ```./config.json```.
@@ -83,7 +81,7 @@ var config = require('envy').config;
 console.log(config.test);
 ```
 
-#### Execute your application
+### Execute your application
 
 Executing your application without setting the ```NODE_ENV``` environment 
 variable will execute the program using the default properties in this case 
@@ -103,6 +101,17 @@ $> NODE_ENV=production node your-app.js
 $> Production property
 $>
 ```
+
+## API
+
+### envy.load(filename)
+
+Loads into ```envy.config``` the properties defined on the provided file.  
+If the ```NODE_ENV``` environment variable hasn't been defined then the 
+selected set of properties will be defined by the ```"environment"``` property
+ of the .json file.  
+The indicated filenames are relative to the execution path: 
+```process.env.PWD```.
 
 ## Future features
 
