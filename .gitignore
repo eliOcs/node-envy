@@ -1,0 +1,3 @@
+# NPM dependencies
+node_modules
+*.log
