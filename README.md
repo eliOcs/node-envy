@@ -1,7 +1,7 @@
 # ENVy
 
 Handle your project environment properties from a simple .json file. Determine
- multiple environment and inherit properties between them.
+ multiple environments and inherit properties between them.
 
 ## Installation
 
@@ -11,9 +11,8 @@ To install simply use the node package manager (NPM):
 
 ## Motivation
 
-There is no standard way of managing in node environment properties per 
-project. With envy you can easily cover this necessity for projects that have 
-to handle many environments.
+There is no standard way of managing environment properties per project in 
+node. With envy you can easily meet this need.
 
 ## Typical use case 
 
