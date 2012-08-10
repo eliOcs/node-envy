@@ -2,7 +2,7 @@
   "author": "Elio Capella Sánchez <eliocapella@gmail.com> (www.eliocapella.com)",
   "name": "envy",
   "description": "Handle your project environment properties from a simple .json file.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/eliOcs/node-envy.git"
@@ -13,7 +13,7 @@
 	},
   "dependencies": {},
   "devDependencies": {
-		"vows": "0.6.2"
+		"vows": "0.6.3"
 	},
   "optionalDependencies": {},
   "engines": {
