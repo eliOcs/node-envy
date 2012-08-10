@@ -10,14 +10,13 @@ vows.describe('Loading a configuration file').addBatch({
 		topic:
 			function() {
 				var envy = require('../envy');
-				envy.load('./test/test-config');
-
-				return envy.config;
+				return envy.load('./test/test-config');
 			},
 	'the properties are retrieved from the default environment':
 		function (config) {
 			assert.equal(config.port, 3000);
-			assert.equal(config.database.url, 'mongodb://localhost/dev-app');
+			assert.equal(config.database.host, 'localhost');
+			assert.equal(config.database.name, 'dev-app');
 		}
 	}
 }).addBatch({
@@ -26,17 +25,16 @@ vows.describe('Loading a configuration file').addBatch({
 			function() {
 				process.env.NODE_ENV = 'production';
 				var envy = require('../envy');
-				envy.load('./test/test-config');
-
-				return envy.config;
+				return envy.load('./test/test-config');
 			},
 	'the non overloaded properties maintain their value':
 		function (config) {
 			assert.equal(config.port, 3000);
+			assert.equal(config.database.host, 'localhost');
 		},
 	'the overloaded properties are overloaded correctly':
 		function (config) {
-			assert.equal(config.database.url, 'mongodb://localhost/prod-app');
+			assert.equal(config.database.name, 'prod-app');
 		}
 	}
 }).exportTo(module);

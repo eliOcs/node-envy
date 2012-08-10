@@ -4,13 +4,14 @@
 	"development": {
 		"port": 3000,
 		"database": {
-			"url": "mongodb://localhost/dev-app"
+			"host": "localhost",
+			"name": "dev-app"
 		}
 	},
 
 	"production": {
 		"database": {
-			"url": "mongodb://localhost/prod-app"
+			"name": "prod-app"
 		}
 	}
 }
