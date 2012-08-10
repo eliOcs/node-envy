@@ -18,8 +18,8 @@ node. With envy you can easily meet this need.
 
 ### Define your configuration file
 
-Create a .json file on your project root (where the package.json is located), 
-for example:
+Create a .json file on your project root (where the package.json is located) 
+this file is normally named `config.json`, for example:
 
     {
       "environment": "development",
@@ -35,14 +35,28 @@ for example:
 
 ### Use your properties in your program
 
-When you `require` the envy module it will try to load the default 
-configuration file at: `./config.json`.
+The envy module is very easy to use, it only has function that loads the 
+configuration file.
+Calling the `load` function with no parameters will try to load `./config.json`:
 
-    var config = require('envy').config;
+    var config = require("envy").load();
 
-    console.log(config.test);
+If your configuration file is named differently you can indicate it, remember 
+file paths are relative to your project root and the file extension may be 
+omitted:
+
+    var config = require("envy").load("./some-dir/filename");
+
+or:
+
+    var config = require("envy").load("./some-dir/filename.json");
 
 ### Execute your application
+
+Imagine we have the following node application:
+
+    var config = require("envy").load("./some-dir/filename.json");
+    console.log(config.test);
 
 Executing your application without setting the `NODE_ENV` environment 
 variable will execute the program using the default properties in this case 
@@ -93,16 +107,12 @@ configured to use the port `3000`, but its database URL will be
 
 ### envy.load(filename)
 
-Loads into `envy.config` the properties defined on the provided file.  
-If the `NODE_ENV` environment variable hasn't been defined then the 
+Loads the properties defined on the provided file and returns the an object with
+ the properties.  
+If the `NODE_ENV` environment variable hasn"t been defined then the 
 selected set of properties will be defined by the `"environment"` property
  of the .json file.  
-The indicated filenames are relative to the execution path: 
-`process.env.PWD`.
 
-## Future features
-
-We plan on extending the current features and include:
-
-- Reload configuration files when they are modified.
-
+* If no filename is provided, `config.json` will be loaded
+* The filename is relative to the execution path: `process.env.PWD`
+* The file extension can be omitted
