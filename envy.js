@@ -38,7 +38,7 @@ var envy = exports,
 envy.load = function (filename) {
 
     // filenames are relative to the execution path
-    var configFile = require(process.env.PWD + "/" + (filename || "config")),
+    var configFile = require(process.cwd() + "/" + (filename || "config")),
         config = configFile[configFile.environment];
 
     // Overwrite default configuration if the NODE_ENV environment variable is
