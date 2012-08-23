@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/eliOcs/node-envy.png)](http://travis-ci.org/eliOcs/node-envy)
 # ENVy
 
 Handle your project environment properties from a simple .json file. Determine
