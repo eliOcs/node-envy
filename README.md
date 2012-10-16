@@ -1,4 +1,4 @@
-# ENVy
+# ENVy [![build status](https://secure.travis-ci.org/eliOcs/node-envy.png)](http://travis-ci.org/eliOcs/node-envy)
 
 Handle your project environment properties from a simple .json file. Determine
  multiple environments and inherit properties between them.
@@ -114,5 +114,5 @@ selected set of properties will be defined by the `"environment"` property
  of the .json file.  
 
 * If no filename is provided, `config.json` will be loaded
-* The filename is relative to the execution path: `process.env.PWD`
+* The filename is relative to the execution path: `process.cwd()`
 * The file extension can be omitted
