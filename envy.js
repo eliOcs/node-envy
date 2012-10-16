@@ -60,6 +60,7 @@ envy.load = function (filename) {
  */
 // Load the default configuration file if it exists
 try {
+    console.log("'envy.config' is deprecated, please use 'envy.load()'");
     envy.config = envy.load();
 } catch (e) {
     // Ignore failure when loading default configuration file
