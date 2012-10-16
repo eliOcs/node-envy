@@ -4,10 +4,11 @@
 /**
  * ENVy
  *
- * Handle your project environment properties from a simple .json file. 
+ * Handle your project environment properties from a simple .json file.
  * Determine multiple environments and inherit properties between them.
  */
-var envy = exports,
+var path = require("path"),
+    envy = exports,
 
     /**
      * Checks for Object instances.
@@ -17,7 +18,7 @@ var envy = exports,
     },
 
     /**
-     * Deep copies the properties of the source object into the destination 
+     * Deep copies the properties of the source object into the destination
      * object.
      */
     deepCopy = function (destination, source) {
@@ -31,14 +32,14 @@ var envy = exports,
     };
 
 /**
- * Loads the configuration .json file with the provided filename and returns an 
+ * Loads the configuration .json file with the provided filename and returns an
  * object with the environment properties.
  * If no filename is providen then ./config.json will be loaded.
  */
 envy.load = function (filename) {
 
     // filenames are relative to the execution path
-    var configFile = require(process.cwd() + "/" + (filename || "config")),
+    var configFile = require(path.join(process.cwd(), filename || "config")),
         config = configFile[configFile.environment];
 
     // Overwrite default configuration if the NODE_ENV environment variable is
@@ -54,7 +55,7 @@ envy.load = function (filename) {
 /**
  * DEPRECATED
  *
- * envy.config can be replaced with envy.load(). Therefore it will 
+ * envy.config can be replaced with envy.load(). Therefore it will
  * be deleted.
  */
 // Load the default configuration file if it exists
