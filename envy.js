@@ -8,28 +8,28 @@
  * Determine multiple environments and inherit properties between them.
  */
 var path = require("path"),
-    envy = exports,
+    envy = exports;
 
-    /**
-     * Checks for Object instances.
-     */
-    isObject = function (object) {
-        return Object.prototype.toString.call(object) === "[object Object]";
-    },
+/**
+ * Checks for Object instances.
+ */
+function isObject(object) {
+    return Object.prototype.toString.call(object) === "[object Object]";
+}
 
-    /**
-     * Deep copies the properties of the source object into the destination
-     * object.
-     */
-    deepCopy = function (destination, source) {
-        Object.keys(source).forEach(function (property) {
-            if (destination[property] && isObject(destination[property])) {
-                deepCopy(destination[property], source[property]);
-            } else {
-                destination[property] = source[property];
-            }
-        });
-    };
+/**
+ * Deep copies the properties of the source object into the destination
+ * object.
+ */
+function deepCopy(destination, source) {
+    Object.keys(source).forEach(function (property) {
+        if (destination[property] && isObject(destination[property])) {
+            deepCopy(destination[property], source[property]);
+        } else {
+            destination[property] = source[property];
+        }
+    });
+}
 
 /**
  * Loads the configuration .json file with the provided filename and returns an
@@ -51,17 +51,3 @@ envy.load = function (filename) {
     return config;
 
 };
-
-/**
- * DEPRECATED
- *
- * envy.config can be replaced with envy.load(). Therefore it will
- * be deleted.
- */
-// Load the default configuration file if it exists
-try {
-    console.log("'envy.config' is deprecated, please use 'envy.load()'");
-    envy.config = envy.load();
-} catch (e) {
-    // Ignore failure when loading default configuration file
-}
