@@ -114,5 +114,5 @@ selected set of properties will be defined by the `"environment"` property
  of the .json file.  
 
 * If no filename is provided, `config.json` will be loaded
-* The filename is relative to the execution path: `process.cwd()`
+* The filename is relative to the execution script
 * The file extension can be omitted
