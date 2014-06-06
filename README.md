@@ -11,14 +11,14 @@ To install simply use the node package manager (NPM):
 
 ## Motivation
 
-There is no standard way of managing environment properties per project in 
+There is no standard way of managing environment properties per project in
 node. With envy you can easily meet this need.
 
-## Typical use case 
+## Typical use case
 
 ### Define your configuration file
 
-Create a .json file on your project root (where the package.json is located) 
+Create a .json file on your project root (where the package.json is located)
 this file is normally named `config.json`, for example:
 
     {
@@ -35,14 +35,14 @@ this file is normally named `config.json`, for example:
 
 ### Use your properties in your program
 
-The envy module is very easy to use, it only has function that loads the 
+The envy module is very easy to use, it only has function that loads the
 configuration file.
 Calling the `load` function with no parameters will try to load `./config.json`:
 
     var config = require("envy").load();
 
-If your configuration file is named differently you can indicate it, remember 
-file paths are relative to your project root and the file extension may be 
+If your configuration file is named differently you can indicate it, remember
+file paths are relative to your project root and the file extension may be
 omitted:
 
     var config = require("envy").load("./some-dir/filename");
@@ -58,15 +58,15 @@ Imagine we have the following node application:
     var config = require("envy").load("./some-dir/filename.json");
     console.log(config.test);
 
-Executing your application without setting the `NODE_ENV` environment 
-variable will execute the program using the default properties in this case 
+Executing your application without setting the `NODE_ENV` environment
+variable will execute the program using the default properties in this case
 the `"development"` set will be selected.
 
     $> node your-app.js
     $> Development property
     $>
 
-If you want to select another environment you will need to set the 
+If you want to select another environment you will need to set the
 `NODE_ENV` environment variable:
 
     $> NODE_ENV=production node your-app.js
@@ -75,15 +75,15 @@ If you want to select another environment you will need to set the
 
 ## File format
 
-The file defines what is your default environment from which all other 
+The file defines what is your default environment from which all other
 environments will inherit their properties.
 
-In the following example the `"development"` environment will be selected 
+In the following example the `"development"` environment will be selected
 by default. _Selecting an environment in your configuration file will also make
- its properties to be inherited in the other environments._  
-Continuing with the example, the `"production"` environment will also be 
-configured to use the port `3000`, but its database URL will be 
-`"mongodb://localhost/prod-app"` instead of 
+ its properties to be inherited in the other environments._
+Continuing with the example, the `"production"` environment will also be
+configured to use the port `3000`, but its database URL will be
+`"mongodb://localhost/prod-app"` instead of
 `"mongodb://localhost/dev-app"`.
 
     {
@@ -108,10 +108,10 @@ configured to use the port `3000`, but its database URL will be
 ### envy.load(filename)
 
 Loads the properties defined on the provided file and returns the an object with
- the properties.  
-If the `NODE_ENV` environment variable hasn"t been defined then the 
+ the properties.
+If the `NODE_ENV` environment variable hasn't been defined then the
 selected set of properties will be defined by the `"environment"` property
- of the .json file.  
+ of the .json file.
 
 * If no filename is provided, `config.json` will be loaded
 * The filename is relative to the execution path: `process.cwd()`
