@@ -1,4 +1,4 @@
-# ENVy [![build status](https://secure.travis-ci.org/eliOcs/node-envy.png)](http://travis-ci.org/eliOcs/node-envy)
+# ENVy
 
 Handle your project environment properties from a simple .json file. Determine
  multiple environments and inherit properties between them.
@@ -25,11 +25,11 @@ this file is normally named `config.json`, for example:
       "environment": "development",
 
       "development": {
-        "test": "Development property"
+        "property": "Development property"
       },
 
       "production": {
-        "test": "Production property"
+        "property": "Production property"
       }
     }
 
