@@ -7,8 +7,7 @@
  * Handle your project environment properties from a simple .json file.
  * Determine multiple environments and inherit properties between them.
  */
-var path = require("path"),
-    envy = exports;
+var envy = exports;
 
 /**
  * Checks for Object instances.
@@ -38,8 +37,8 @@ function deepCopy(destination, source) {
  */
 envy.load = function (filename) {
 
-    // filenames are relative to the execution path
-    var configFile = require(path.join(process.cwd(), filename || "config")),
+    // filenames are relative to the execution script
+    var configFile = require(filename || "config"),
         config = configFile[configFile.environment];
 
     // Overwrite default configuration if the NODE_ENV environment variable is
